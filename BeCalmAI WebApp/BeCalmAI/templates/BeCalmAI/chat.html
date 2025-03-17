@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mental Health Chat</title>
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user_input").value;
+            fetch('/BeCalmAI/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({'message': userInput})
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("chat_box").innerHTML += "<p><b>You:</b> " + userInput + "</p>";
+                document.getElementById("chat_box").innerHTML += "<p><b>AI:</b> " + data.response + "</p>";
+                document.getElementById("user_input").value = "";
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="chat_box" style="border:1px solid black; height: 300px; overflow-y:scroll;"></div>
+    <input type="text" id="user_input">
+    <button onclick="sendMessage()">Send</button>
+</body>
+</html>
