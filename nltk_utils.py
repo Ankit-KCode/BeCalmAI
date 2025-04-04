@@ -1,6 +1,7 @@
 import json
 import numpy as np
 import nltk
+from nltk.tokenize import word_tokenize
 # nltk.download('punkt')
 # nltk.download('wordnet')
 from nltk.stem.porter import PorterStemmer
@@ -14,7 +15,8 @@ def tokenize(sentence):
     split sentence into array of words/tokens
     a token can be a word or punctuation character, or number
     """
-    return nltk.word_tokenize(sentence.lower())
+    # return nltk.word_tokenize(sentence.lower())
+    return word_tokenize(sentence.lower())
 
 
 def stem(word):
