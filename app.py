@@ -1,28 +1,31 @@
 from flask import Flask, render_template, request, jsonify
-
 from chat import get_response
 
 app = Flask(__name__)
-
-
+score_resp = []  # Declaring globally
 
 @app.get("/")
 def index_get():
-    return render_template("index.html")
+    return render_template("index.html", request=request)
 
 @app.post("/predict")
 def predict():
     text = request.get_json().get("message")
-    # TODO: check if text is valid
-    response = get_response(text, score_resp)
-    #return response
-    #Add the score to a previous array
-    score_resp.append(response[1][0])
-    #Bot response
+    print("Received Message:", text)  # Debugging Step
+
+    if not text:
+        return jsonify({"answer": "Error: No input received!"})
+
+    response = get_response(text)  # Pass only one argument
+    print("Bot Response:", response)  # Debugging Step
+
+    if not response:
+        return jsonify({"answer": "Error: No response from model!"})
+
+    score_resp.append(response[1][0])  # Score tracking
     response = response[0]
-    message = {"answer": response}
-    return jsonify(message)
+
+    return jsonify({"answer": response})
 
 if __name__ == "__main__":
-    score_resp = []
     app.run(debug=True)
