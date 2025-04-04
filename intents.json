@@ -61,10 +61,10 @@
         "Who am I talking to?"
       ],
       "responses": [
-        "My name is Happy2Help. I may be a chatbot, but I'm a good listener 😉 \nHow was your day?",
-        "Hey! I'm Happy2Help, your friendly mental health chatbot. \nHow do you feel today?",
-        "I'm Happy2Help, your friendly mental health chatbot. \nHow are you today?",
-        "Let me introduce myself to you, my new friend: My name is Happy2Help 😃 \nHow have you feeling the past few days?"
+        "My name is BeCalmAI. I may be a chatbot, but I'm a good listener 😉 \nHow was your day?",
+        "Hey! I'm BeCalmAI, your friendly mental health chatbot. \nHow do you feel today?",
+        "I'm BeCalmAI, your friendly mental health chatbot. \nHow are you today?",
+        "Let me introduce myself to you, my new friend: My name is BeCalmAI 😃 \nHow have you feeling the past few days?"
       ]
     },
     {
@@ -97,11 +97,16 @@
       "patterns": [
         "I'm feeling sad",
         "I'm upset",
-        "I'm not feeling good"
+        "I'm not feeling good",
+        "I am feeling very down",
+        "Nothing is going right",
+        "I feel empty inside"
       ],
       "responses": [
         "I'm really sorry you're feeling this way. Would you like to talk about it?",
-        "I'm here for you. Want to share what's bothering you?"
+        "I'm here for you. Want to share what's bothering you?",
+        "You're not alone. It's okay to feel sad.",
+        "Would you like to hear some ways to feel better?"
       ]
     },
     {
