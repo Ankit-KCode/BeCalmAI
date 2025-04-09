@@ -1,57 +1,66 @@
 from flask import Flask, request, jsonify, render_template
+from llm_model.model_loader import load_local_model
+from llm_model.cloud_model import call_openrouter  # Make sure this file exists and is working
 import torch
-from llm_model.model_loader import load_llama_model
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
-# Load model & tokenizer once at startup
-print("🔄 Loading LLaMA model...")
-model, tokenizer = load_llama_model()
-print("✅ LLaMA model loaded!")
-print("👋 llama_chat.py is running")
-def generate_response(user_input):
-    # Encode input and generate response
-    input_ids = tokenizer.encode(user_input, return_tensors="pt")
+# Load local model on startup
+print("🧠 Initializing local fallback model...")
+model, tokenizer = load_local_model()
+print("✅ Local model ready!")
 
-    if torch.cuda.is_available():
-        input_ids = input_ids.to("cuda")
-        model.to("cuda")
+# Function to generate reply using local model
+def generate_local_reply(user_input):
+    try:
+        inputs = tokenizer.encode(user_input, return_tensors="pt")
 
-    with torch.no_grad():
-        output = model.generate(
-            input_ids,
-            max_length=200,
-            temperature=0.7,
-            do_sample=True,
-            top_p=0.9,
-            num_return_sequences=1
-        )
+        if torch.cuda.is_available():
+            inputs = inputs.to("cuda")
+            model.to("cuda")
 
-    # Decode generated text
-    response = tokenizer.decode(output[:, input_ids.shape[-1]:][0], skip_special_tokens=True)
-    return response.strip()
+        with torch.no_grad():
+            outputs = model.generate(
+                inputs,
+                max_length=150,
+                temperature=0.7,
+                top_p=0.9,
+                do_sample=True,
+                num_return_sequences=1
+            )
 
+        reply = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        return reply.strip()
+    except Exception as e:
+        print(f"❌ Local generation error: {e}")
+        return "I'm having trouble generating a response right now."
+
+# Route: Home page
 @app.route("/")
 def home():
     return render_template("index.html")
 
+# Route: Chat prediction
 @app.route("/predict", methods=["POST"])
 def predict():
+    user_input = request.json.get("message")
+
+    if not user_input:
+        return jsonify({"answer": "Please type something so I can respond."})
+
     try:
-        user_input = request.json.get("message")
-        if not user_input:
-            return jsonify({"answer": "Please type something so I can respond."})
-
-        response = generate_response(user_input)
+        print("🌐 Trying cloud response...")
+        response = call_openrouter(user_input)
+        if "🌐 Error" in response or not response.strip():
+            raise Exception("Cloud failed")
+        print("✅ Cloud response successful")
         return jsonify({"answer": response})
-
     except Exception as e:
-        print(f"❌ Error: {e}")
-        return jsonify({"answer": "Oops! Something went wrong on the server."})
+        print(f"⚠️ Cloud failed. Using local model. Reason: {e}")
+        fallback = generate_local_reply(user_input)
+        return jsonify({"answer": fallback})
 
-
-# ✅ Keep only ONE entry point
+# Start the Flask server
 if __name__ == "__main__":
     print("🚀 Starting Flask server at http://127.0.0.1:5050 ...")
     app.run(debug=True, host="127.0.0.1", port=5050)
-
