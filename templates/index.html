@@ -7,6 +7,60 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
+    <!-- 🌟 New Hero Section Start -->
+    <div class="hero-section">
+        <nav class="nav-bar">
+            <div class="logo">BeCalm<span class="highlight">AI</span></div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Me</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#" class="app-button">Try</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <div class="left-content">
+                <p class="offer">🌀 Express You Thoughts . Free forever </p>
+                <h1>Be Calm<br><span>Have Some Talks</span></h1>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-black">Get Started</a>
+                    <a href="#" class="link-style">Our Features</a>
+                </div>
+                <div class="avatars">
+                    <!-- <img src="{{ url_for('static', filename='images/Home Cover.png') }}" alt=""> -->
+                </div>
+                <div class="cover">
+                    <img src="{{ url_for('static', filename='images/Home Cover.png') }}" alt="">
+                </div>
+            </div>
+
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='images/profile.png') }}" class="main-person" alt="">
+                    <!-- <div class="stats-card">
+                        <p>Monthly Revenue</p>
+                        <div class="chart-bars">
+                            <div class="bar bar-1"></div>
+                            <div class="bar bar-2"></div>
+                            <div class="bar bar-3"></div>
+                            <div class="bar bar-4"></div>
+                            <div class="bar bar-5"></div>
+                        </div>
+                        <div class="months">
+                            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
+                        </div>
+                    </div>
+                    <div class="growth">+75.4%</div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 🌟 New Hero Section End -->
+
+    <!-- 💬 Chatbox Interface -->
     <div class="chatbox">
         <div class="chatbox__support">
             <div class="chatbox__header">
@@ -35,10 +89,13 @@
         </div>
 
         <div class="chatbox__btn">
-            <button><img class="chatbox__btn--img" src="{{ url_for('static', filename='images/Chat Website Logo.png') }}" /></button>
+            <button>
+                <img class="chatbox__btn--img" src="{{ url_for('static', filename='images/Chat Website Logo.png') }}" />
+            </button>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
         var SCRIPT_ROOT = "{{ request.script_root or '/' }}";
     </script>

@@ -35,7 +35,7 @@ body {
 /* CHATBOX POSITION FIX */
 .chatbox {
     position: fixed;
-    bottom: 20px;
+    bottom: 15px;
     right: 20px;
     z-index: 999;
 }
@@ -44,8 +44,8 @@ body {
 .chatbox__support {
     display: flex;
     flex-direction: column;
-    width: 370px;
-    height: 600px;
+    width: 400px;
+    height: 655px;
     background: var(--chatboxBg);
     box-shadow: var(--primaryBoxShadow);
     border-radius: 15px;
@@ -197,4 +197,155 @@ body {
 @keyframes loading {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.5); }
+}
+
+
+/* ============================== HERO STYLING ====================================== */
+.hero-section {
+    padding: 38px;
+    height: 810px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #ffffff;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.logo .highlight {
+    color: #2f55ff;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    position:absolute;
+    right: 500px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.app-button {
+    background: #000;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+
+.main-content {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.left-content h1 {
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+.left-content span {
+    color: #2f55ff;
+}
+
+.avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: -10px;
+    border: 3px solid white;
+}
+
+.cover img {
+    width: 860px;
+    height: 460px;
+    /* border-radius: 50%; */
+    position: absolute;
+    /* bottom: 1px; */
+    left: 160px;
+    /* border: 3px solid white; */
+    z-index: 0;
+}
+
+.cta-buttons {
+    margin-top: 20px;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.link-style {
+    text-decoration: underline;
+    color: #444;
+    font-weight: 500;
+}
+
+/* RIGHT SIDE */
+.image-container {
+    position: relative;
+    text-align: center;
+}
+
+.main-person {
+    width: 300px;
+    border-radius: 20px;
+}
+
+
+.chart-bars {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.bar {
+    width: 10px;
+    border-radius: 4px;
+    background: #ccc;
+}
+
+.bar-1 { height: 40px; background-color: #888; }
+.bar-2 { height: 80px; background-color: #facc15; }
+.bar-3 { height: 50px; background-color: #38bdf8; }
+.bar-4 { height: 70px; background-color: #a78bfa; }
+.bar-5 { height: 60px; background-color: #f472b6; }
+
+.months {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    margin-top: 6px;
+}
+
+.growth {
+    position: absolute;
+    right: -40px;
+    top: 40%;
+    transform: rotate(90deg);
+    font-weight: bold;
+    font-size: 24px;
+    color: #000;
 }
