@@ -31,7 +31,7 @@ const sendMessage = () => {
     addMessage('operator', userInput);
     input.value = "";
 
-    // Show loading animation
+    // Loading animation
     const botDiv = addMessage('visitor', `
         <div class="loader">
             <div class="loader__dot"></div>
@@ -52,12 +52,14 @@ const sendMessage = () => {
         const botResponse = r.answer || "Sorry, I didn't understand that.";
         setTimeout(() => {
             botDiv.innerText = botResponse;
+            scrollToBottom();
         }, 1200);
     })
     .catch(err => {
         console.error("API Error:", err);
         setTimeout(() => {
             botDiv.innerText = "Oops! Something went wrong. Please try again.";
+            scrollToBottom();
         }, 1200);
     });
 };
@@ -67,8 +69,12 @@ const addMessage = (sender, text) => {
     msgDiv.className = `messages__item messages__item--${sender}`;
     msgDiv.innerHTML = text;
     chatMessages.appendChild(msgDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    scrollToBottom();
     return msgDiv;
+};
+
+const scrollToBottom = () => {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 };
 
 display();
