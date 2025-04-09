@@ -3,42 +3,40 @@ import os
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# Debug Print: Check if script is running
 print("🚀 model_loader.py is executing...")
 
-# Get the absolute path of the root directory (BeCalmAI)
+# Add root directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Debug Print: Check if path is set correctly
 print("📂 sys.path updated:", sys.path)
 
-# Import config
+# Load model configuration
 try:
     from llm_model.config import MODEL_NAME, USE_CUDA
-    print(f"✅ Imported config: MODEL_NAME={MODEL_NAME}, USE_CUDA={USE_CUDA}")
+    print(f"✅ Config loaded: MODEL_NAME = {MODEL_NAME}, USE_CUDA = {USE_CUDA}")
 except Exception as e:
-    print(f"❌ Error importing config: {e}")
+    print(f"❌ Failed to load config: {e}")
     sys.exit(1)
 
-# Function to load LLaMA model
-def load_llama_model():
-    print("🔄 Loading LLaMA model...")
-
+def load_local_model():
+    print(f"🔄 Loading local model: {MODEL_NAME} ...")
     try:
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
         model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
 
+        # Move to GPU if available and enabled
         if USE_CUDA and torch.cuda.is_available():
             model = model.to("cuda")
             print("✅ Model loaded on GPU")
         else:
-            print("⚠️ Using CPU (slower performance)")
+            print("⚠️ GPU not available or disabled — using CPU")
 
         return model, tokenizer
+
     except Exception as e:
-        print(f"❌ Error loading model: {e}")
+        print(f"❌ Error loading model '{MODEL_NAME}': {e}")
         sys.exit(1)
 
-# Call function for debugging
+# Test model loading directly if this file is run standalone
 if __name__ == "__main__":
-    load_llama_model()
+    model, tokenizer = load_local_model()
+    print("✅ Local model test load successful")
