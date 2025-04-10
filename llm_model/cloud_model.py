@@ -1,7 +1,7 @@
 import requests
 
 # Example using OpenRouter.ai
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "API Here"
 
 def call_openrouter(user_input):
     headers = {
