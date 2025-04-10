@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify, render_template
 from llm_model.model_loader import load_local_model
-from llm_model.cloud_model import call_openrouter  # Make sure this file exists and is working
+from llm_model.cloud_model import call_openrouter 
 import torch
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
-# Load local model on startup
+# Loading local model on startup
 print("🧠 Initializing local fallback model...")
 model, tokenizer = load_local_model()
 print("✅ Local model ready!")
@@ -35,12 +35,12 @@ def generate_local_reply(user_input):
         print(f"❌ Local generation error: {e}")
         return "I'm having trouble generating a response right now."
 
-# Route: Home page
+# Routing: Home page
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# Route: Chat prediction
+# Routing: Chat prediction
 @app.route("/predict", methods=["POST"])
 def predict():
     user_input = request.json.get("message")
@@ -60,7 +60,7 @@ def predict():
         fallback = generate_local_reply(user_input)
         return jsonify({"answer": fallback})
 
-# Start the Flask server
+# Starting the Flask server
 if __name__ == "__main__":
     print("🚀 Starting Flask server at http://127.0.0.1:5050 ...")
     app.run(debug=True, host="127.0.0.1", port=5050)
