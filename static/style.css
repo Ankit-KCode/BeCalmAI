@@ -353,3 +353,221 @@ body {
     font-size: 24px;
     color: #000;
 }
+
+
+
+/* ABOUT PAGE--------------------------------------- */
+
+/* Basic Reset */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+} */
+
+/* Navbar */
+/* .navbar {
+    background-color: #009e96;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+} */
+/* 
+.logo {
+    color: white;
+    font-size: 1.5em;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+} */
+
+/* .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    text-decoration: underline;
+}
+
+/* About Section */
+.about-section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
+} */
+
+.about-container {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.about-container h2 {
+    font-size: 2.2em;
+    color: #009e96;
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1em;
+    margin-top: 40px;
+    background-color: #efefef;
+    color: #666;
+}
+
+
+
+/* CONTACT PAGE ------------------------------------------- */
+
+
+.contact-header {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: #00a79b;
+    color: white;
+}
+
+.contact-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Contact Cards */
+.contact-options {
+    
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    background: #fff;
+}
+
+.contact-card {
+    background: #f5f5f5;
+    border-radius: 8px;
+    text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    width: 30%;
+}
+
+.contact-card h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    margin: 0.5rem 0;
+}
+
+.contact-card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #00a79b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-card button:hover {
+    background: #45a049;
+}
+
+/* General Inquiries Section */
+.general-inquiries {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #fff;
+}
+
+.general-inquiries h2 {
+    margin-bottom: 1rem;
+}
+
+.general-inquiries form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.general-inquiries form input,
+.general-inquiries form textarea {
+    width: 80%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #9c9b9b;
+    border-radius: 5px;
+}
+
+.general-inquiries form button {
+    padding: 0.75rem 2rem;
+    background: #00a79b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.general-inquiries form button:hover {
+    background: #45a049;
+}
+
+/* Footer Section */
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    background: #f5f5f5;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    width: 1150px;
+    left: 135px;
+    gap: 30px;
+    font-size: medium;
+}
+
+.contact-footer h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-footer p {
+    margin: 0.3rem 0;
+}
+
+.contact-footer button {
+    padding: 0.5rem 1rem;
+    background: #00a79b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-footer button:hover {
+    background: #45a049;
+}
